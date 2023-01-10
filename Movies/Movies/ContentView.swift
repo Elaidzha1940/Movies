@@ -22,7 +22,10 @@ struct ContentView: View {
                 guard let data = data else { return }
                 
                 DispatchQueue.main.async {
-                    let uiImage = UIImage(data: data)
+                    guard let uiImage = UIImage(data: data) else {
+                        return
+                    }
+                    self.image = Image(uiImage: uiImage)
                 }
             }
         }
