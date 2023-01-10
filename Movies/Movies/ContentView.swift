@@ -43,14 +43,13 @@ struct ContentView: View {
                 
                 if let image = viewModel.image {
                     ZStack {
-                        
                         image
                             .resizable()
                             .foregroundColor(.brown)
                             .frame(width: 400, height: 450)
                             .padding()
                     }
-                    .frame(width: UIScreen.main.bounds.width / 1.2,
+                    .frame(width: UIScreen.main.bounds.width / 1.1,
                            height: UIScreen.main.bounds.width / 1.2)
                     .background(Color.black)
                     .cornerRadius(12)
