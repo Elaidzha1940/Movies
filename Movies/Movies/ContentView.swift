@@ -39,7 +39,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 
-                Spacer()
+               Spacer()
                 
                 if let image = viewModel.image {
                     ZStack {
@@ -66,7 +66,7 @@ struct ContentView: View {
                 Button {
                     viewModel.fetchNewImage()
                 } label: {
-                    Text("New Movie")
+                    Text("Pick")
                         .font(.title3)
                         .frame(width: 200, height: 50)
                         .fontWeight(.bold)
@@ -77,7 +77,7 @@ struct ContentView: View {
                 }
             }
             .background(Color.gray)
-            .navigationTitle("Movies")
+            .navigationTitle("Pics")
         }
     }
 }
