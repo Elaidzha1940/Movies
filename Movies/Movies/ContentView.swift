@@ -8,14 +8,58 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+    
+    class ViewModel: ObservableObject {
+        @Published var image: Image ?
+        
+        func fetchNewImage() {
+            guard let url = URL(string:
+                                    "https://random.imagecdn.app/500/500") else {
+                return
+            }
+            let task = URLSession.shared.data.dataTask(with: url) { data,
+                 _, _ in
+                guard let data = data else { return }
+                
+                DispatchQueue.main.async {
+                    let uiImage = UIImage(data: data)
+                }
+            }
         }
-        .padding()
+    }
+    
+    var body: some View {
+        
+        NavigationView {
+            
+            VStack {
+                
+                Spacer()
+                
+                Image(systemName: "photo")
+                    .resizable()
+                    .foregroundColor(.brown)
+                    .frame(width: 400, height: 450)
+                    .padding()
+                
+                Spacer()
+                
+                Button {
+                    print()
+                } label: {
+                    Text("New Movie")
+                        .font(.title3)
+                        .frame(width: 200, height: 50)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .cornerRadius(12)
+                        .padding()
+                }
+
+            }
+            .navigationTitle("Movies")
+        }
     }
 }
 
